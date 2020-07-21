@@ -3,3 +3,12 @@ export function getRandomPokemon(pokeData) {
     return pokeData[randomPokemon];
 }
 
+export function resetPokemon() {
+    const randomPokemon1 = getRandomPokemon(pokeData);
+    let randomPokemon2 = getRandomPokemon(pokeData);
+    let randomPokemon3 = getRandomPokemon(pokeData);
+
+    
+
+
+    }
