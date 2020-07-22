@@ -95,10 +95,18 @@ footer {
     box-shadow: var(--shadow);
 }
 
-.hidden {
+/* .hidden {
     display: none;
-}
+} */
 
 .disabled {
     opacity: .3;
+}
+
+input:checked + img {
+    border: solid 2px rgb(10, 21, 119);
+}
+
+input {
+    display: none
 }
