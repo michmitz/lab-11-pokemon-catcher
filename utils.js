@@ -1,12 +1,7 @@
-// import { pokeData } from './pokemon.js';
-// import { pokeDex } from './pokeDex.js';
-
-
 export function getRandomPokemon(pokeData) {
     const randomPokemon = Math.floor(Math.random() * pokeData.length);
     return pokeData[randomPokemon];
 }
-
 
 // export function getPokemonStatistics() {
 //     const rawPokemonData = localStorage.getItem('POKEMON STATS');
@@ -26,7 +21,8 @@ export function findByName(someArray, pokemonName) {
     for (let i = 0; i < someArray.length; i++){
         const arrayItem = someArray[i];
         if (pokemonName === arrayItem.pokemon) {
-            return arrayItem;} 
+            return arrayItem;
+        } 
     } return null;
 }
 
@@ -39,46 +35,14 @@ export function encounteredPokemon(pokemonEncountered, pokemon) {
         const newEncounter = {
             pokemon: pokemon,
             encounters: 1,
-            caught: 0
+            timesCaught: 0
         };
         pokemonEncountered.push(newEncounter);
     }
 }
 
-export function chosenPokemon(pokemonEncountered, pokemon) {
-    let caught = findByName(pokemonEncountered, pokemon);
-    
-    if (caught) {
-        caught.caught++;
-    } else {
-        const newCapture = {
-            pokemon: pokemon,
-            encounters: 1,
-            caught: 1
-        };
-        pokemonEncountered.push(newCapture);
-    }
+export function trapPokemon(pokemonEncountered, pokemonName) {
+    let trappedPokemon = findByName(pokemonEncountered, pokemonName);
+    trappedPokemon.timesCaught++;
+
 }
-
-
-// export function addEncounters(pokemon, someArray) {
-//     const pokeResults = JSON.parse(localStorage.getItem('POKESTATS'));
-//     const foundPokemon = findByName(someArray, pokemon);
-
-//     if (foundPokemon) {
-//         foundPokemon.encountered++;
-//     }
-//     const stringyPokemonStats = JSON.stringify(pokeResults);
-//     localStorage.setItem('POKESTATS', stringyPokemonStats);
-// }
-
-// export function capturePokemon(pokemon, someArray) {
-//     const pokeResults = JSON.parse(localStorage.getItem('POKESTATS'));
-//     const foundPokemon = findByName(someArray, pokemon);
-
-//     if (foundPokemon) {
-//         foundPokemon.captured++;
-//     }
-//     const stringyPokemonStats = JSON.stringify(pokeResults);
-//     localStorage.setItem('POKESTATS', stringyPokemonStats);
-// }

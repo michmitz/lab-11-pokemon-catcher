@@ -1,6 +1,5 @@
 import { pokeData } from './pokemon.js';
-import { getRandomPokemon, findByName, encounteredPokemon, chosenPokemon } from './utils.js';
-// import { pokeDex } from './pokeDex.js';
+import { getRandomPokemon, findByName, encounteredPokemon, trapPokemon } from './utils.js';
 
 const nextButton = document.getElementById('next');
 const labels = document.querySelectorAll('label');
@@ -10,7 +9,7 @@ let pokemonEncountered = [];
 function setPokemon() {
     getRandomPokemon(pokeData);
 
-    const randomPokemon1 = getRandomPokemon(pokeData);
+    let randomPokemon1 = getRandomPokemon(pokeData);
     let randomPokemon2 = getRandomPokemon(pokeData);
     let randomPokemon3 = getRandomPokemon(pokeData);
 
@@ -18,8 +17,6 @@ function setPokemon() {
         randomPokemon2 = getRandomPokemon(pokeData);
         randomPokemon3 = getRandomPokemon(pokeData);
     }
-
-    // console.log(randomPokemon1.pokemon, randomPokemon2.pokemon, randomPokemon3.pokemon);
 
     const firstLabel = labels[0];
     let input1 = firstLabel.children[0];
@@ -29,7 +26,6 @@ function setPokemon() {
     input1.value = randomPokemon1.pokemon;
     image1.src = randomPokemon1.url_image;
     span1.textContent = randomPokemon1.pokemon;
-    // console.log(pokemonEncountered, randomPokemon1.pokemon);
     encounteredPokemon(pokemonEncountered, randomPokemon1.pokemon);
 
     const secondLabel = labels[1];
@@ -40,7 +36,6 @@ function setPokemon() {
     input2.value = randomPokemon2.pokemon;
     image2.src = randomPokemon2.url_image;
     span2.textContent = randomPokemon2.pokemon;
-    // console.log(pokemonEncountered, randomPokemon2.pokemon);
     encounteredPokemon(pokemonEncountered, randomPokemon2.pokemon);
 
 
@@ -52,7 +47,6 @@ function setPokemon() {
     input3.value = randomPokemon3.pokemon;
     image3.src = randomPokemon3.url_image;
     span3.textContent = randomPokemon3.pokemon;
-    // console.log(pokemonEncountered, randomPokemon3.pokemon);
     encounteredPokemon(pokemonEncountered, randomPokemon3.pokemon);
 
 }
@@ -65,25 +59,18 @@ nextButton.addEventListener('click', () => {
     counter--;
         
     const clickedPokemon = document.querySelector('input:checked');
-    // console.log(clickedPokemon);
-
-    const pokemonTarget = clickedPokemon.pokemon;
-    // console.log(pokemonTarget);
-
+    const pokemonTarget = clickedPokemon.value;
     const pokemonInCart = findByName(pokeData, pokemonTarget);
 
-    chosenPokemon(pokemonEncountered, pokemonInCart);
+    trapPokemon(pokemonEncountered, pokemonInCart.pokemon);
 
     const stringyPokemonData = JSON.stringify(pokemonEncountered);
     localStorage.setItem('POKESTATS', stringyPokemonData);
-
-
 
     if (counter === 0) {
         alert('You captured 10 pokemon!');
         window.location = './results/index.html';
     }
-    
    
     setPokemon();
     
