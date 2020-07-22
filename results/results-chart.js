@@ -7,6 +7,8 @@ const mungedNames = mungeNames(pokemonData);
 const mungedCaptured = mungeCaptured(pokemonData);
 const mungedEncountered = mungeEncountered(pokemonData);
 
+const replayButton = document.getElementById('play-again');
+
 const myChart = new Chart(ctx, { // eslint-disable-line
     type: 'bar',
     data: {
@@ -40,4 +42,10 @@ const myChart = new Chart(ctx, { // eslint-disable-line
             }]
         }
     }
+});
+
+replayButton.addEventListener('click', () => {
+    clearCart();
+    window.location = '../index.html';
+
 });
