@@ -68,6 +68,7 @@ nextButton.addEventListener('click', () => {
     localStorage.setItem('POKESTATS', stringyPokemonData);
 
     if (counter === 0) {
+        
         alert('You captured 10 pokemon!');
         window.location = './results/index.html';
     }
@@ -77,40 +78,6 @@ nextButton.addEventListener('click', () => {
 });
 
 setPokemon();
-
-// nextButton.addEventListener('click', setPokemon);
-// setPokemon();
-// // const clickedPokemon = document.querySelector('input:checked');
-// console.log('clicked pokemon', clickedPokemon);
-
-
-// let rounds = 0;
-// let pokemonCaptured = [];
-// let pokemonEncountered = [];
-
-// function eventHandler() {
-    
-    // console.log(e.target.value);
-   
-    // const userChoice = e.target.value;
-    // pokemonEncountered.push(userChoice);
-    // pokemonCaptured.push(userChoice);
-
-    // input1.disabled = true;
-    // input2.disabled = true;
-    // input3.disabled = true;
-
-    // const guessDiv = document.getElementById('guesses');
-    // guessDiv.classList.add('disabled');
-    // nextButton.classList.remove('hidden');
-
-    // resetPokemon();
-
-    // if (pokemonCaptured.length === 10) {
-    //     window.location = './results/index.html';
-    // }
-
-// }
 
 
 

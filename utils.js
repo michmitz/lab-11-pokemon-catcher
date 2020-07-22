@@ -3,20 +3,6 @@ export function getRandomPokemon(pokeData) {
     return pokeData[randomPokemon];
 }
 
-// export function getPokemonStatistics() {
-//     const rawPokemonData = localStorage.getItem('POKEMON STATS');
-//     const parsedPokemonData = JSON.parse(rawPokemonData);
-
-//     if (!rawPokemonData) {
-//         const stringyPokemonStats = JSON.stringify(pokeDex);
-//         const currentPokemonStats = JSON.parse(stringyPokemonStats); 
-
-//         return currentPokemonStats;
-//     }
-
-//     return parsedPokemonData;
-// }
-
 export function findByName(someArray, pokemonName) {
     for (let i = 0; i < someArray.length; i++){
         const arrayItem = someArray[i];
