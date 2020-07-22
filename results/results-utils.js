@@ -1,3 +1,7 @@
+
+
+
+
 export function mungeCaptured(pokemonArray) {
     const captures = [];
     
