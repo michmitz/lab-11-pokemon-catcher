@@ -1,15 +1,12 @@
-/* eslint-disable */
-
 // IMPORT MODULES under test here:
 // import { example } from '../example.js';
 
 const test = QUnit.test;
-const skip = QUnit.skip;
 
-skip('time to test a function', (expect) => {
+test('time to test a function', (expect) => {
     //Arrange
     // Set up your arguments and expectations
-    const expected = true;
+    const expected = false;
     
     //Act 
     // Call the function you're testing and set the result to a const
