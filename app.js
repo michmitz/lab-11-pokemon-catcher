@@ -1,9 +1,11 @@
-import { pokemonData } from './pokemon.js';
-import { getRandomPokemon } from './utils.js';
+import { pokeData } from './pokemon.js';
+import { getRandomPokemon, findByName, encounteredPokemon, chosenPokemon } from './utils.js';
+// import { pokeDex } from './pokeDex.js';
 
 const nextButton = document.getElementById('next');
 const labels = document.querySelectorAll('label');
-const pokeData = pokemonData.slice();
+
+let pokemonEncountered = [];
 
 function setPokemon() {
     getRandomPokemon(pokeData);
@@ -12,66 +14,82 @@ function setPokemon() {
     let randomPokemon2 = getRandomPokemon(pokeData);
     let randomPokemon3 = getRandomPokemon(pokeData);
 
-    while (randomPokemon1.id === randomPokemon2.id || randomPokemon1.id === randomPokemon3.id || randomPokemon2.id === randomPokemon3.id) {
+    while (randomPokemon1.pokemon === randomPokemon2.pokemon || randomPokemon1.pokemon === randomPokemon3.pokemon || randomPokemon2.pokemon === randomPokemon3.pokemon) {
         randomPokemon2 = getRandomPokemon(pokeData);
         randomPokemon3 = getRandomPokemon(pokeData);
     }
+
+    // console.log(randomPokemon1.pokemon, randomPokemon2.pokemon, randomPokemon3.pokemon);
 
     const firstLabel = labels[0];
     let input1 = firstLabel.children[0];
     let image1 = firstLabel.children[1];
     let span1 = firstLabel.children[2];
 
-    input1.value = randomPokemon1.id;
-    // input1.addEventListener('click', eventHandler);
+    input1.value = randomPokemon1.pokemon;
     image1.src = randomPokemon1.url_image;
     span1.textContent = randomPokemon1.pokemon;
+    // console.log(pokemonEncountered, randomPokemon1.pokemon);
+    encounteredPokemon(pokemonEncountered, randomPokemon1.pokemon);
 
     const secondLabel = labels[1];
     let input2 = secondLabel.children[0];
     let image2 = secondLabel.children[1];
     let span2 = secondLabel.children[2];
 
-    input2.value = randomPokemon2.id;
-    // input2.addEventListener('click', eventHandler);
+    input2.value = randomPokemon2.pokemon;
     image2.src = randomPokemon2.url_image;
     span2.textContent = randomPokemon2.pokemon;
+    // console.log(pokemonEncountered, randomPokemon2.pokemon);
+    encounteredPokemon(pokemonEncountered, randomPokemon2.pokemon);
+
 
     const thirdLabel = labels[2];
     let input3 = thirdLabel.children[0];
-    // input3.addEventListener('click', eventHandler);
     let image3 = thirdLabel.children[1];
     let span3 = thirdLabel.children[2];
 
-    input3.value = randomPokemon3.id;
+    input3.value = randomPokemon3.pokemon;
     image3.src = randomPokemon3.url_image;
     span3.textContent = randomPokemon3.pokemon;
+    // console.log(pokemonEncountered, randomPokemon3.pokemon);
+    encounteredPokemon(pokemonEncountered, randomPokemon3.pokemon);
+
 }
 
-//Use this event handler if I want to have event on each button.
-// function eventHandler() {
-    
-//     nextButton.classList.remove('hidden');
-// }
 
+let counter = 10;
 
-let pokemonCaptured = [];
-let setsOfPokemon = 0;
 
 nextButton.addEventListener('click', () => {
-    setsOfPokemon++;
+    counter--;
+        
     const clickedPokemon = document.querySelector('input:checked');
-    console.log('clicked pokemon', clickedPokemon);
-    const userChoice = clickedPokemon.value;
-     
+    // console.log(clickedPokemon);
 
+    const pokemonTarget = clickedPokemon.pokemon;
+    // console.log(pokemonTarget);
+
+    const pokemonInCart = findByName(pokeData, pokemonTarget);
+
+    chosenPokemon(pokemonEncountered, pokemonInCart);
+
+    const stringyPokemonData = JSON.stringify(pokemonEncountered);
+    localStorage.setItem('POKESTATS', stringyPokemonData);
+
+
+
+    if (counter === 0) {
+        alert('You captured 10 pokemon!');
+        window.location = './results/index.html';
+    }
     
-    // if (pokemonCaptured.length === 10) {
-    //     window.location = './results/index.html';
-    // }
+   
     setPokemon();
     
 });
+
+setPokemon();
 
 // nextButton.addEventListener('click', setPokemon);
 // setPokemon();
