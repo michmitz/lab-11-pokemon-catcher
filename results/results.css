@@ -6,11 +6,21 @@ body {
 }
 
 button {
-    margin-top: 10px;
-    margin-bottom: 50px;
-    background-color: pink;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: hsl(199, 82%, 69%);
     border: none;
-    padding: 10px;
-    border-radius: 5px 5px 5px 5px;
-    font-size: 12px;
+    border-radius: 10px 10px 10px 10px;
+    color: rgb(255, 245, 212);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Press Start 2P', cursive;
+
+}
+
+canvas {
+    background-color: rgb(156, 210, 253, .7);
 }

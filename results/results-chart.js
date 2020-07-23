@@ -17,18 +17,18 @@ const myChart = new Chart(ctx, { // eslint-disable-line
             label: 'Pokemon Captured',
             data: mungedCaptured,
             backgroundColor:
-                'pink',
+                'white',
             borderColor:
-                'pink',
+                'white',
             borderWidth: 1
         },
         {
             label: 'Pokemon Encountered',
             data: mungedEncountered,
             backgroundColor: 
-                'yellow',
+                'rgb(255,250,205)',
             borderColor: 
-                'yellow',
+                'rgb(255,250,205)',
             borderWidth: 1
         },
         ]
@@ -43,6 +43,9 @@ const myChart = new Chart(ctx, { // eslint-disable-line
         }
     }
 });
+
+
+Chart.defaults.global.defaultFontColor = 'yellow'; // eslint-disable-line
 
 replayButton.addEventListener('click', () => {
     clearCart();

@@ -32,3 +32,12 @@ export function trapPokemon(pokemonEncountered, pokemonName) {
     trappedPokemon.timesCaught++;
 
 }
+
+
+// export function returnTotalEncountered(pokemonEncountered) {
+//     for (let i = 0; i < pokemonEncountered.length; i++) {
+//         let totalEncountered = pokemonEncountered[i].encountered;
+//         return totalEncountered;
+//     }
+
+// }
